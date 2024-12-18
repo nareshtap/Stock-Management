@@ -1,7 +1,30 @@
-# compiled output
-/dist
-/node_modules
-/build
+# Backend (stock-management) ignores
+/stock-management/node_modules
+/stock-management/.pnp
+/stock-management/.pnp.*
+/stock-management/yarn/*
+!/stock-management/yarn/patches
+!/stock-management/yarn/plugins
+!/stock-management/yarn/releases
+!/stock-management/yarn/versions
+/stock-management/coverage
+
+/stock-management/build
+/stock-management/dist
+
+# Frontend (stock-management-ui) ignores
+/stock-management-ui/node_modules
+/stock-management-ui/.pnp
+/stock-management-ui/.pnp.*
+/stock-management-ui/yarn/*
+!/stock-management-ui/yarn/patches
+!/stock-management-ui/yarn/plugins
+!/stock-management-ui/yarn/releases
+!/stock-management-ui/yarn/versions
+/stock-management-ui/coverage
+
+/stock-management-ui/.next
+/stock-management-ui/out
 
 # Logs
 logs
@@ -54,3 +77,21 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Vercel (frontend path for .vercel)
+# Ignore .vercel directory in the frontend
+/stock-management-ui/.vercel
