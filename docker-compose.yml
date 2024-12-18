@@ -1,0 +1,28 @@
+version: '3.5'
+
+services:
+  stockmanagement:
+    image: stockmanagement
+    build:
+      context: ./stock-management
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:8000
+    networks:
+      - project_network
+
+  stockmanagement-ui:
+    build:
+      context: ./stock-management-ui
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - stockmanagement
+    networks:
+      - project_network
+
+
+networks:
+  project_network:
+    driver: bridge
