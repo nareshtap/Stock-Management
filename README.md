@@ -7,6 +7,10 @@ This repository contains two main services:
 
 Both services are containerized using Docker for seamless deployment and development.
 
+## Preview
+![stockgif (1)](https://github.com/user-attachments/assets/a13ffc95-5b58-404e-8c25-4b066b50b4fb)
+
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
