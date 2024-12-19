@@ -42,8 +42,15 @@ export default function Row(props: { row: StockDataItem }) {
       >
         <TableCell className="cursor-pointer">
           {!isMetaEmpty && 
-            <IconButton aria-label="expand row" size="small" onClick={handleRowClick}>
-              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            <IconButton 
+              aria-label="expand row" 
+              size="small" 
+              onClick={handleRowClick}
+            >
+              {open ? 
+                <KeyboardArrowUpIcon onClick={handleRowClick} /> : 
+                <KeyboardArrowDownIcon onClick={handleRowClick} />
+              }
             </IconButton>
           }
         </TableCell>

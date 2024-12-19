@@ -93,6 +93,7 @@ export default function CollapsibleTable(props: CollapsibleTableProps) {
   const [rowsData, setRowsData] = useState<StockDataItem[]>(data);
   const [filterTypes, setFilterTypes] = useState<CurrencyTypes | null>(null);
   const [selectedCurrency, setSelectedCurrency] = useState<string>("");
+  const [totlePage, setTotlePage] = useState<number>(totalRecords);
 
   /**
  * Fetches available filter types and currencies from the backend.
@@ -110,7 +111,8 @@ export default function CollapsibleTable(props: CollapsibleTableProps) {
 
       useEffect(()=>{
         setRowsData(data)
-      }, [data])
+        setTotlePage(totalRecords)
+      }, [data,totalRecords])
 
   /**
  * Effect hook to fetch filter types when the component mounts.
@@ -134,7 +136,8 @@ export default function CollapsibleTable(props: CollapsibleTableProps) {
         params: { page: fpage, pageSize: fpageSize, searchQuery: fsearchQuery, sortBy: fsortBy, sortOrder: fsortOrder },
       });
      
-      setRowsData(response.data?.data || []);
+      setRowsData(response?.data?.data || []);
+      setTotlePage(response?.data?.totalRecords)
     } catch (error) {
       console.log("Erroe While Facing Data",error)
     }
@@ -148,8 +151,9 @@ export default function CollapsibleTable(props: CollapsibleTableProps) {
  * @param newPage - The new page number.
  */
   const handleChangePage = (event: React.MouseEvent | null, newPage: number) => {
-    fetchData(newPage, filter.pageSize, filter.searchQuery, filter.sortBy, filter.sortOrder);
-    setFilter((prev) => ({ ...prev, page: newPage }));
+    const adjustedPage = newPage + 1
+    fetchData(adjustedPage, filter.pageSize, filter.searchQuery, filter.sortBy, filter.sortOrder);
+    setFilter((prev) => ({ ...prev, page: adjustedPage }));
   };
 
   /**
@@ -302,13 +306,13 @@ return (
       </Table>
     </TableContainer>
 
-    {totalRecords > 0 && (
+    {totlePage > 0 && (
       <TablePagination
         rowsPerPageOptions={[10, 50, 100, 200]}
         component="div"
-        count={totalRecords}
+        count={totlePage}
         rowsPerPage={filter.pageSize}
-        page={filter.page}
+        page={filter.page - 1}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
