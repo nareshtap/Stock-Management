@@ -72,7 +72,7 @@ export default function Row(props: { row: StockDataItem }) {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {loaded && keys.map((key, index) => {
+                      {loaded && keys?.map((key, index) => {
                         const value = typeof metadata[key] === "object" 
                           ? JSON.stringify(metadata[key]) 
                           : metadata[key] || "N/A";

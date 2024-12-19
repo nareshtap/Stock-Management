@@ -30,14 +30,14 @@ export default function LineChart({ data }: LineChartProps) {
     },
     {
       label: 'Highest Price',
-      data: data.map((item) => item.highestprice),
+      data: data?.map((item) => item.highestprice),
       fill: false,
       borderColor: 'rgb(255, 99, 132)',
       tension: 0.1,
     },
     {
       label: 'Lowest Price',
-      data: data.map((item) => item.lowestprice),
+      data: data?.map((item) => item.lowestprice),
       fill: false,
       borderColor: 'rgb(153, 102, 255)',
       tension: 0.1,

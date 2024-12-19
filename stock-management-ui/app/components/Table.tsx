@@ -252,7 +252,7 @@ return (
                 onChange={handleSearch}
               />
             </TableCell>
-            {headCells.map((headCell) => (
+            {headCells?.map((headCell) => (
               <TableCell
                 align="center"
                 key={headCell.id}

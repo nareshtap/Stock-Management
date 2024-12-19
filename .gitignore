@@ -8,6 +8,7 @@
 !/stock-management/yarn/releases
 !/stock-management/yarn/versions
 /stock-management/coverage
+/stock-management/.vercel
 
 /stock-management/build
 /stock-management/dist
